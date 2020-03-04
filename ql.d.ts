@@ -1,7 +1,7 @@
 /**
- * ql.d.ts v0.3.2 https://quantlib.js.org
+ * ql.d.ts v0.3.3 https://quantlib.js.org
  *
- * Copyright 2019 Jin Yang. All Rights Reserved.
+ * Copyright 2019 - 2020 Jin Yang. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -24507,9 +24507,9 @@ export declare namespace MonteCarloModel {
 }
 
 export declare class MultiPathGenerator {
-  constructor(
+  init2(
       process: StochasticProcess, times: TimeGrid, generator: USG<Real[]>,
-      brownianBridge?: boolean);
+      brownianBridge?: boolean): MultiPathGenerator;
   next(): MultiPathGenerator.sample_type;
   antithetic(): MultiPathGenerator.sample_type;
   private next_;
