@@ -1,6 +1,6 @@
 # quantlib.js
 
-[![npm version](https://img.shields.io/npm/v/@quantlib/ql.svg?style=flat)](https://www.npmjs.com/package/@quantlib/ql) [![](https://data.jsdelivr.com/v1/package/npm/@quantlib/ql/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@quantlib/ql) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)  [![copyright](https://img.shields.io/badge/%C2%A9%202020-Jin%20Yang-brightgreen)](https://quantlib.js.org/blog/) [![Twitter Follow](https://img.shields.io/twitter/follow/fucktwitter.svg?style=social&maxAge=3600)](https://twitter.com/fucktwitter)
+[![npm version](https://img.shields.io/npm/v/@quantlib/ql.svg?style=flat)](https://www.npmjs.com/package/@quantlib/ql) [![](https://data.jsdelivr.com/v1/package/npm/@quantlib/ql/badge?style=rounded)](https://www.jsdelivr.com/package/npm/@quantlib/ql) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Twitter Follow](https://img.shields.io/twitter/follow/fucktwitter.svg?style=social&maxAge=3600)](https://twitter.com/fucktwitter)
 
 ## quantitative finance in javascript
 1. [introduction](#introduction)
@@ -15,13 +15,15 @@
 10. [test report](#test-report)
 
 ## introduction
-`quantlib.js` aims to be a **COMPLETE** re-implementation of `C++` [QuantLib](https://quantlib.org) in `javascript` language, [emscripten](https://emscripten.org/) is **NOT** used. it can be used in web browser or node.js environment.
+`quantlib.js` aims to be a **COMPLETE** re-implementation of `C++` [QuantLib](https://quantlib.org/test-suite/) in `javascript` language, [emscripten](https://emscripten.org/) is **NOT** used. it can be used in web browser or node.js environment.
 
 ## get started
 
-1. open https://quantlib.js.org with morden web browser, like chrome, firefox, etc...
+> Old home page and `get started` section moved to https://quantlib.js.org/test-suite/
 
-2. select a `spec` or `example` from menu. `spec` source will be displayed on left panel, `spec` will be run with [jasmine](https://github.com/jasmine/jasmine) by your web browser, and test result will be displayed on right panel
+We build a `notebook` app for easy use of `quantlib.js`, it's hosted on Github pages, after loading, it works offline.
+
+https://quantlib.js.org/notebook/
 
 ## usage
 
@@ -184,6 +186,7 @@ console.log(`NPV = ${npv}`); // 4.155543462156206
 ## release note
 | version | notes |
 | ------- | ----- |
+| 0.3.4 | no fix, renamed many symbol names for notebook app |
 | 0.3.3 | fixed most `asianoption` specs |
 | 0.3.2 | fixed `swaption`, most of `short-rate models` specs and some other pricing specs, and part of `bermudanswaption` example |
 | 0.3.1 | examples code cleanup, fixed 4 examples, `global optimizers` example DE tests passed |
@@ -205,15 +208,13 @@ console.log(`NPV = ${npv}`); // 4.155543462156206
 
 ## test-suite & example
 
-A static [report](https://quantlib.js.org/test-suite/) is updated regularly, so you could see the overall test status. C++ [example output](https://quantlib.js.org/examples/) for reference
-
 source code in ESM `javascript`:
 * https://github.com/quantlibjs/test-suite
 * https://github.com/quantlibjs/examples
 
 converted from the `c++` [quantlib](https://www.quantlib.org/) [test-suite](https://github.com/lballabio/QuantLib/tree/master/test-suite) & [Examples](https://github.com/lballabio/QuantLib/tree/master/Examples)
 
-these are the code loaded and executed in https://quantlib.js.org
+these are the code loaded and executed in https://quantlib.js.org/test-suite/
 
 ## license
 ```

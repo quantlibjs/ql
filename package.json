@@ -1,6 +1,6 @@
 {
   "name": "@quantlib/ql",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "quantitative finance in javascript",
   "main": "ql.mjs",
   "module": "ql.mjs",
