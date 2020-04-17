@@ -186,6 +186,7 @@ console.log(`NPV = ${npv}`); // 4.155543462156206
 ## release note
 | version | notes |
 | ------- | ----- |
+| 0.3.5 | minor fix for notebook |
 | 0.3.4 | no fix, renamed many symbol names for notebook app |
 | 0.3.3 | fixed most `asianoption` specs |
 | 0.3.2 | fixed `swaption`, most of `short-rate models` specs and some other pricing specs, and part of `bermudanswaption` example |
