@@ -73,9 +73,11 @@ console.log(`NPV = ${npv}`);  // 4.155543462156206
 </script>
 ```
 
-#### what about `UMD` format/style javascript?
+#### `UMD` format javascript
 
-You may use javascript dynamic [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Import)
+`ql.js` is published as of 0.3.6
+
+You may also use javascript dynamic [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Import)
 
 ```html
 <script>
@@ -186,6 +188,7 @@ console.log(`NPV = ${npv}`); // 4.155543462156206
 ## release note
 | version | notes |
 | ------- | ----- |
+| 0.3.6 | releaed `UMD` version: `ql.js`, minor fix to `cashflowvector` |
 | 0.3.5 | minor fix for notebook |
 | 0.3.4 | no fix, renamed many symbol names for notebook app |
 | 0.3.3 | fixed most `asianoption` specs |

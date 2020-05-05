@@ -31,42 +31,42 @@ declare namespace std {
   export function adjacent_difference(a: number[]): number[];
 }
 
-declare class complex {
+declare class Complex {
   constructor(r?: Real, i?: Real);
   real(): Real;
   imag(): Real;
   norm(): Real;
   abs(): Real;
-  clone(): complex;
-  add(c: complex): complex;
-  addScalar(s: Real): complex;
-  sub(c: complex): complex;
-  subScalar(s: Real): complex;
-  mul(c: complex): complex;
-  mulScalar(r: Real): complex;
-  div(c: complex): complex;
-  divScalar(r: Real): complex;
+  clone(): Complex;
+  add(c: Complex): Complex;
+  addScalar(s: Real): Complex;
+  sub(c: Complex): Complex;
+  subScalar(s: Real): Complex;
+  mul(c: Complex): Complex;
+  mulScalar(r: Real): Complex;
+  div(c: Complex): Complex;
+  divScalar(r: Real): Complex;
   toString(): string;
   _real: Real;
   _imag: Real;
 }
-declare namespace complex {
-  function newArray(n: Size): complex[];
-  function cloneArray(c: complex[]): complex[];
-  function abs(c: complex): Real;
-  function add(c1: complex, c2: complex): complex;
-  function addScalar(c: complex, s: Real): complex;
-  function sub(c1: complex, c2: complex): complex;
-  function subScalar(c: complex, s: Real): complex;
-  function mul(c1: complex, c2: complex): complex;
-  function mulScalar(c: complex, s: Real): complex;
-  function div(c1: complex, c2: complex): complex;
-  function pow(c: complex, n: Size): complex;
-  function sqrt(c: complex): complex;
-  function exp(c: complex): complex;
-  function log(c: complex): complex;
-  function equal(c1: complex, c2: complex): boolean;
-  function notEqual(c1: complex, c2: complex): boolean;
+declare namespace Complex {
+  function newArray(n: Size): Complex[];
+  function cloneArray(c: Complex[]): Complex[];
+  function abs(c: Complex): Real;
+  function add(c1: Complex, c2: Complex): Complex;
+  function addScalar(c: Complex, s: Real): Complex;
+  function sub(c1: Complex, c2: Complex): Complex;
+  function subScalar(c: Complex, s: Real): Complex;
+  function mul(c1: Complex, c2: Complex): Complex;
+  function mulScalar(c: Complex, s: Real): Complex;
+  function div(c1: Complex, c2: Complex): Complex;
+  function pow(c: Complex, n: Size): Complex;
+  function sqrt(c: Complex): Complex;
+  function exp(c: Complex): Complex;
+  function log(c: Complex): Complex;
+  function equal(c1: Complex, c2: Complex): boolean;
+  function notEqual(c1: Complex, c2: Complex): boolean;
 }
 
 interface NullaryFunction<T> {
@@ -7721,7 +7721,7 @@ export declare class FdmZabrOp extends FdmLinearOpComposite {
   apply_direction(direction: Size, r: Real[]): Real[];
   solve_splitting(direction: Size, r: Real[], a: Real): Real[];
   preconditioner(r: Real[], dt: Real): Real[];
-  toMatrixDecomp(): Sparse[];
+  toMatrixDecomp(): SparseMatrix[];
   private _volatilityValues;
   private _forwardValues;
   private _dxyMap;
@@ -9587,7 +9587,7 @@ export declare class FFTEngine extends VanillaOptionEngine.engine {
   precalculate(optionList: Instrument[]): void;
   clone(): FFTEngine;
   protected precalculateExpiry(d: Date): void;
-  protected complexFourierTransform(u: complex): complex;
+  protected complexFourierTransform(u: Complex): Complex;
   protected discountFactor(d: Date): Real;
   protected dividendYield(d: Date): Real;
   protected calculateUncached(payoff: StrikedTypePayoff, exercise: Exercise):
@@ -9601,7 +9601,7 @@ export declare class FFTVanillaEngine extends FFTEngine {
   constructor(process: GeneralizedBlackScholesProcess, logStrikeSpacing?: Real);
   clone(): FFTVanillaEngine;
   precalculateExpiry(d: Date): void;
-  complexFourierTransform(u: complex): complex;
+  complexFourierTransform(u: Complex): Complex;
   discountFactor(d: Date): Real;
   dividendYield(d: Date): Real;
   private _dividendDiscount;
@@ -9614,7 +9614,7 @@ export declare class FFTVarianceGammaEngine extends FFTEngine {
   constructor(process: VarianceGammaProcess, logStrikeSpacing?: Real);
   clone(): FFTEngine;
   protected precalculateExpiry(d: Date): void;
-  protected complexFourierTransform(u: complex): complex;
+  protected complexFourierTransform(u: Complex): Complex;
   protected discountFactor(d: Date): Real;
   protected dividendYield(d: Date): Real;
   private _dividendDiscount;
@@ -12490,19 +12490,19 @@ export declare namespace Array1D {
 }
 
 export declare function convolutions(
-    forward: complex[], begin: Size, end: Size, out: Real[],
+    forward: Complex[], begin: Size, end: Size, out: Real[],
     maxLag: Size): void;
 export declare function autocovariances1(
-    forward: complex[], begin: Size, end: Size, out: Real[],
+    forward: Complex[], begin: Size, end: Size, out: Real[],
     maxLag: Size): void;
 export declare function autocovariances2(
-    forward: complex[], begin: Size, end: Size, out: Real[], maxLag: Size,
+    forward: Complex[], begin: Size, end: Size, out: Real[], maxLag: Size,
     reuse: boolean): Real;
 export declare function autocorrelations1(
-    forward: complex[], begin: Size, end: Size, out: Real[],
+    forward: Complex[], begin: Size, end: Size, out: Real[],
     maxLag: Size): void;
 export declare function autocorrelations2(
-    forward: complex[], begin: Size, end: Size, out: Real[], maxLag: Size,
+    forward: Complex[], begin: Size, end: Size, out: Real[], maxLag: Size,
     reuse: boolean): Real;
 
 export declare class BernsteinPolynomial {
@@ -12553,8 +12553,8 @@ export declare class FastFourierTransform {
   constructor(order: Size);
   static min_order(inputSize: Size): Size;
   output_size(): Size;
-  transform(input: complex[], output: complex[]): void;
-  inverse_transform(input: complex[], output: complex[]): void;
+  transform(input: Complex[], output: Complex[]): void;
+  inverse_transform(input: Complex[], output: Complex[]): void;
   private transform_impl;
   static bit_reverse(x: Size, order: Size): Size;
   private _cs;
@@ -12566,22 +12566,22 @@ export declare class constant<T, U> implements UnaryFunction<T, U> {
   f(t: T): U;
   private _u;
 }
-export declare class uf_identity implements UnaryFunction<any, any> {
+export declare class identity implements UnaryFunction<any, any> {
   f(t: any): any;
 }
-export declare class uf_square implements UnaryFunction<Real, Real> {
+export declare class square implements UnaryFunction<Real, Real> {
   f(t: Real): Real;
 }
-export declare class uf_sin implements UnaryFunction<Real, Real> {
+export declare class sin implements UnaryFunction<Real, Real> {
   f(t: Real): Real;
 }
-export declare class uf_cos implements UnaryFunction<Real, Real> {
+export declare class cos implements UnaryFunction<Real, Real> {
   f(t: Real): Real;
 }
-export declare class uf_cube implements UnaryFunction<Real, Real> {
+export declare class cube implements UnaryFunction<Real, Real> {
   f(x: Real): Real;
 }
-export declare class uf_fourth_power implements UnaryFunction<Real, Real> {
+export declare class fourth_power implements UnaryFunction<Real, Real> {
   f(x: Real): Real;
 }
 export declare class everywhere<T> implements UnaryFunction<T, boolean> {
@@ -12791,17 +12791,17 @@ export declare namespace Array2D {
 export declare function modifiedBesselFunction_i(nu: Real, x: Real): Real;
 export declare function modifiedBesselFunction_k(nu: Real, x: Real): Real;
 export declare function modifiedBesselFunction_ic(
-    nu: Real, z: complex): complex;
+    nu: Real, z: Complex): Complex;
 export declare function modifiedBesselFunction_kc(
-    nu: Real, z: complex): complex;
+    nu: Real, z: Complex): Complex;
 export declare function modifiedBesselFunction_i_exponentiallyWeighted(
     nu: Real, x: Real): Real;
 export declare function modifiedBesselFunction_ic_exponentiallyWeighted(
-    nu: Real, z: complex): complex;
+    nu: Real, z: Complex): Complex;
 export declare function modifiedBesselFunction_k_exponentiallyWeighted(
     nu: Real, x: Real): Real;
 export declare function modifiedBesselFunction_kc_exponentiallyWeighted(
-    nu: Real, z: complex): complex;
+    nu: Real, z: Complex): Complex;
 export declare function modifiedBesselFunction_i_Press(nu: Real, x: Real): Real;
 export declare function modifiedBesselFunction_k_Press(nu: Real, x: Real): Real;
 
@@ -14377,9 +14377,9 @@ export declare function qrSolve(
     a: Matrix, b: Real[], pivot?: boolean, d?: Real[]): Real[];
 
 export declare class SparseILUPreconditioner {
-  constructor(A: Sparse, lfil?: Integer);
-  L(): Sparse;
-  U(): Sparse;
+  constructor(A: SparseMatrix, lfil?: Integer);
+  L(): SparseMatrix;
+  U(): SparseMatrix;
   apply(b: Real[]): Real[];
   private forwardSolve;
   private backwardSolve;
@@ -14389,31 +14389,33 @@ export declare class SparseILUPreconditioner {
   private _uBands;
 }
 
-export declare class Sparse {
+export declare class SparseMatrix {
   constructor();
-  static from(m: Real[][]): Sparse;
+  static from(m: Real[][]): SparseMatrix;
   to(): Real[][];
-  smInit1(row_size: Integer, column_size: Integer, non_zeroes?: Size): Sparse;
+  smInit1(row_size: Integer, column_size: Integer, non_zeroes?: Size):
+      SparseMatrix;
   smInit2(
       row_size: Integer, column_size: Integer, values: Real[], columns: Size[],
-      rowIndex: Integer[], filled_row_until: Size): Sparse;
+      rowIndex: Integer[], filled_row_until: Size): SparseMatrix;
   smInit3(
       row_size: Integer, column_size: Integer, values: Real[],
-      columns: Integer[], rowIndex: Integer[], filled_row_until: Size): Sparse;
-  clone(): Sparse;
+      columns: Integer[], rowIndex: Integer[],
+      filled_row_until: Size): SparseMatrix;
+  clone(): SparseMatrix;
   filled_size(): Size;
   row_size(): Size;
   column_size(): Size;
   f(m: Size, n: Size): Real;
   set(m: Size, n: Size, v: Real): void;
-  mulScalarAssign(x: Real): Sparse;
-  mulScalar(x: Real): Sparse;
-  minusAssign(): Sparse;
+  mulScalarAssign(x: Real): SparseMatrix;
+  mulScalar(x: Real): SparseMatrix;
+  minusAssign(): SparseMatrix;
   mulVector(x: Real[]): Real[];
-  adda(x: Sparse): Sparse;
-  add(x: Sparse): Sparse;
-  suba(x: Sparse): Sparse;
-  sub(x: Sparse): Sparse;
+  adda(x: SparseMatrix): SparseMatrix;
+  add(x: SparseMatrix): SparseMatrix;
+  suba(x: SparseMatrix): SparseMatrix;
+  sub(x: SparseMatrix): SparseMatrix;
   private findIndex;
   private insert;
   private _values;
@@ -14423,7 +14425,7 @@ export declare class Sparse {
   private _row_size;
   private _filled_row_until;
 }
-export declare function identity_matrix(s: Size): Sparse;
+export declare function identity_matrix(s: Size): SparseMatrix;
 
 export declare class SVD {
   constructor(M: Matrix);
@@ -14477,15 +14479,15 @@ export declare namespace TqrEigenDecomposition {
 }
 
 export interface OdeFunction1D {
-  f1(x: Real, y: complex): complex;
+  f1(x: Real, y: Complex): Complex;
 }
 export interface OdeFunction2D {
-  f2(x: Real, y: complex[]): complex[];
+  f2(x: Real, y: Complex[]): Complex[];
 }
 export declare class AdaptiveRungeKutta {
   constructor(eps?: Real, h1?: Real, hmin?: Real);
-  f2(ode: OdeFunction2D, y1: complex[], x1: Real, x2: Real): complex[];
-  f1(ode: OdeFunction1D, y1: complex, x1: Real, x2: Real): complex;
+  f2(ode: OdeFunction2D, y1: Complex[], x1: Real, x2: Real): Complex[];
+  f1(ode: OdeFunction1D, y1: Complex, x1: Real, x2: Real): Complex;
   private rkqs;
   private rkck;
   private _eps;
@@ -21338,7 +21340,7 @@ export declare class AnalyticH1HWEngine extends AnalyticHestonHullWhiteEngine {
   ah1hweInit2(
       model: HestonModel, hullWhiteModel: HullWhite, rhoSr: Real,
       relTolerance: Real, maxEvaluations: Size): AnalyticH1HWEngine;
-  addOnTerm(u: Real, t: Time, j: Size): complex;
+  addOnTerm(u: Real, t: Time, j: Size): Complex;
   private _rhoSr;
 }
 
@@ -21351,8 +21353,8 @@ export declare class AnalyticHestonEngine extends GenericModelEngine<
       model: HestonModel, cpxLog: AnalyticHestonEngine.ComplexLogFormula,
       integration: AnalyticHestonEngine.Integration,
       andersenPiterbargEpsilon?: Real): AnalyticHestonEngine;
-  chF(z: complex, T: Time): complex;
-  lnChF(z: complex, t: Time): complex;
+  chF(z: Complex, T: Time): Complex;
+  lnChF(z: Complex, t: Time): Complex;
   calculate(): void;
   numberOfEvaluations(): Size;
   static doCalculation(
@@ -21362,7 +21364,7 @@ export declare class AnalyticHestonEngine extends GenericModelEngine<
       integration: AnalyticHestonEngine.Integration,
       cpxLog: AnalyticHestonEngine.ComplexLogFormula,
       enginePtr: AnalyticHestonEngine, ref: byRef): void;
-  addOnTerm(phi: Real, t: Time, j: Size): complex;
+  addOnTerm(phi: Real, t: Time, j: Size): Complex;
   private _evaluations;
   private _cpxLog;
   private _integration;
@@ -21474,7 +21476,7 @@ export declare class AnalyticHestonHullWhiteEngine extends
       maxEvaluations: Size): AnalyticHestonHullWhiteEngine;
   update(): void;
   calculate(): void;
-  addOnTerm(u: Real, t: Time, j: Size): complex;
+  addOnTerm(u: Real, t: Time, j: Size): Complex;
   protected _hullWhiteModel: HullWhite;
   private _m;
   private _a;
@@ -21497,8 +21499,8 @@ export declare class AnalyticPTDHestonEngine extends GenericModelEngine<
       andersenPiterbargEpsilon?: Real): AnalyticPTDHestonEngine;
   calculate(): void;
   numberOfEvaluations(): Size;
-  chF(z: complex, T: Time): complex;
-  lnChF(z: complex, T: Time): complex;
+  chF(z: Complex, T: Time): Complex;
+  lnChF(z: Complex, T: Time): Complex;
   private _evaluations;
   private _cpxLog;
   private _integration;
@@ -21551,14 +21553,14 @@ export declare class BatesEngine extends AnalyticHestonEngine {
   beInit1(model: BatesModel, integrationOrder?: Size): BatesEngine;
   beInit2(model: BatesModel, relTolerance: Real, maxEvaluations: Size):
       BatesEngine;
-  addOnTerm(phi: Real, t: Time, j: Size): complex;
+  addOnTerm(phi: Real, t: Time, j: Size): Complex;
 }
 export declare class BatesDetJumpEngine extends BatesEngine {
   bdjeInit1(model: BatesDetJumpModel, integrationOrder?: Size):
       BatesDetJumpEngine;
   bdjeInit2(model: BatesDetJumpModel, relTolerance: Real, maxEvaluations: Size):
       BatesDetJumpEngine;
-  addOnTerm(phi: Real, t: Time, j: Size): complex;
+  addOnTerm(phi: Real, t: Time, j: Size): Complex;
 }
 export declare class BatesDoubleExpEngine extends AnalyticHestonEngine {
   bdeeInit1(model: BatesDoubleExpModel, integrationOrder?: Size):
@@ -21566,7 +21568,7 @@ export declare class BatesDoubleExpEngine extends AnalyticHestonEngine {
   bdeeInit2(
       model: BatesDoubleExpModel, relTolerance: Real,
       maxEvaluations: Size): BatesDoubleExpEngine;
-  addOnTerm(phi: Real, t: Time, j: Size): complex;
+  addOnTerm(phi: Real, t: Time, j: Size): Complex;
 }
 export declare class BatesDoubleExpDetJumpEngine extends BatesDoubleExpEngine {
   bdedjeInit1(model: BatesDoubleExpDetJumpModel, integrationOrder?: Size):
@@ -21574,7 +21576,7 @@ export declare class BatesDoubleExpDetJumpEngine extends BatesDoubleExpEngine {
   bdedjeInit2(
       model: BatesDoubleExpDetJumpModel, relTolerance: Real,
       maxEvaluations: Size): BatesDoubleExpDetJumpEngine;
-  addOnTerm(phi: Real, t: Time, j: Size): complex;
+  addOnTerm(phi: Real, t: Time, j: Size): Complex;
 }
 
 export declare class BinomialVanillaEngine extends VanillaOption.engine {
@@ -21599,7 +21601,7 @@ export declare class COSHestonEngine extends GenericModelEngine<
   constructor(model: HestonModel, L?: Real, N?: Size);
   update(): void;
   calculate(): void;
-  chF(u: Real, t: Real): complex;
+  chF(u: Real, t: Real): Complex;
   c1(t: Time): Real;
   c2(t: Time): Real;
   c3(t: Time): Real;
@@ -25219,8 +25221,8 @@ export declare class FdmLinearOpComposite extends FdmLinearOp {
   apply_direction(direction: Size, r: Real[]): Real[];
   solve_splitting(direction: Size, r: Real[], s: Real): Real[];
   preconditioner(r: Real[], s: Real): Real[];
-  toMatrixDecomp(): Sparse[];
-  toMatrix(): Sparse;
+  toMatrixDecomp(): SparseMatrix[];
+  toMatrix(): SparseMatrix;
 }
 
 export declare class FdmLinearOpIterator {
@@ -25365,7 +25367,7 @@ export declare class TripleBandLinearOp extends FdmLinearOp {
   axpyb(a: Real[], x: TripleBandLinearOp, y: TripleBandLinearOp, b: Real[]):
       void;
   swap(m: TripleBandLinearOp): void;
-  toMatrix(): Sparse;
+  toMatrix(): SparseMatrix;
   protected _direction: Size;
   protected _i0: Size[];
   protected _i2: Size[];
